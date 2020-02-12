@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class AddressBookApplication {
 	
@@ -8,11 +9,11 @@ public class AddressBookApplication {
 	AddressBookApplication(){
 		initAddressbookExcercise(ab)
 	}*/
-    
-	public static void main(String args[]) {
+
+	public static void main(String args[]) throws IOException {
        //simply invokes static methods of the Menu class    	
     	AddressBook ab = new AddressBook();
-		ab.listAdd();
+		ab.init("file.txt");
 		ab.list();
         //***YOU NOW FINISH CODE TO CALL ALL the rest of the static methods of the Menu class 
 
@@ -30,7 +31,7 @@ class AddressEntry {
     private String firstName, lastName, street, city, state, phone, email ;
     private int zip;
     
-    public AddressEntry(String firstName,String lastName,String street,String city, String state, String phone, int zip) {
+    public AddressEntry(String firstName,String lastName,String street,String city, String state, String phone,String email, int zip) {
         setFirstName(firstName);
         setLastName(lastName);
         setCity(city);
@@ -38,6 +39,7 @@ class AddressEntry {
         setStreet(street);
         setPhone(phone);
         setZip(zip);
+        setEmail(email);
     }
     
     public String getFirstName() {
@@ -82,29 +84,66 @@ class AddressEntry {
     public void setZip(int zip) {
         this.zip = zip;
     }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
 
 
 
-class AddressBook extends ArrayList<AddressEntry> {
-	
-	public AddressEntry createAddress (String firstName,String lastName,String street,String city, String state, String phone, int zip) {
-        return new AddressEntry(firstName, lastName, street, city, state, phone, zip); 
-        }
+class AddressBook  {
 
-    public void listAdd() {
-        add(createAddress("Jerry","Lee", "Ronson","Hayward","California", "1500-9999", 15779));
-        add(createAddress("Berry","Park", "Ronson","Hayward","California", "410-424-2222", 17579));
-        add(createAddress("Henrey","Jung", "Ronson","Hayward","California", "19999-9999", 13339));
-        add(createAddress("Rorry","Kim", "Ronson","Hayward","California", "1400-22222", 15559));
-        add(createAddress("Jenny","Lim", "Ronson","Hayward","California", "4444-2222", 19999));
+	HashMap<String,AddressEntry>map = new HashMap<String,AddressEntry>();
 
-    }
+    public void init(String filename) throws IOException {
+   
+			FileReader fr = null;
+			BufferedReader br = null;	
+			File file = new File(filename);
+				String a = null;
+				if(file.canRead()){
+		            fr = new FileReader(file);
+		            br = new BufferedReader(fr);
+		            String strTmp;
+		            int i =0;
+		            while((strTmp = br.readLine()) != null)
+		            { 
+		            	AddressEntry a1 = new AddressEntry(null,null,null,null, null,null,null,0);
+		               a = strTmp;
+		               a1.setFirstName(strTmp);
+		               strTmp = br.readLine();
+		               a1.setLastName(strTmp);
+		               strTmp = br.readLine();
+		               a1.setStreet(strTmp);
+		               strTmp = br.readLine();
+		               a1.setState(strTmp);
+		               strTmp = br.readLine();
+		               a1.setCity(strTmp);
+		               strTmp = br.readLine();
+		               a1.setZip(Integer.parseInt(strTmp));
+		               strTmp = br.readLine();
+		               a1.setEmail(strTmp);
+		               strTmp = br.readLine();
+		               a1.setPhone(strTmp);
+		               map.put(a, new AddressEntry(a1.getFirstName(),a1.getLastName(),a1.getState(),a1.getCity(),a1.getState(),a1.getPhone(),a1.getEmail(),a1.getZip()));
+			}
+		} 
+            fr.close();
+            br.close();
+		}
+
     public void list() {
     	String result = null;
-        for (int i = 0; i < this.size(); i++) {
+    	Set<String> keylist = map.keySet();
+    	Iterator<String> itr = keylist.iterator();
+    	int i =0;
+        while(itr.hasNext()) {
+        	String key = itr.next();
+            AddressEntry a = map.get(key); 
         	System.out.println("#"+ (i+1));
-            AddressEntry a = get(i); 
             Menu.prompt_FirstName();
             System.out.println( a.getFirstName());
             Menu.prompt_LastName();
@@ -119,11 +158,10 @@ class AddressBook extends ArrayList<AddressEntry> {
             System.out.println(  a.getPhone() );
             Menu.prompt_Zip();
             System.out.println(  a.getZip() );
+            i++;
         }
     }
-	public AddressBook() {
-		super(5);
-	}
+
 	
 }
 
