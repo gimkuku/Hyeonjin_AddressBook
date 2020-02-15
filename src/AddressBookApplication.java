@@ -99,7 +99,8 @@ class AddressBook  {
 	HashMap<String,AddressEntry>map = new HashMap<String,AddressEntry>();
 
     public void init(String filename) throws IOException {
-   
+    	  String firstName, lastName, street, city, state, phone, email;
+		int zip;
 			FileReader fr = null;
 			BufferedReader br = null;	
 			File file = new File(filename);
@@ -111,30 +112,27 @@ class AddressBook  {
 		            int i =0;
 		            while((strTmp = br.readLine()) != null)
 		            { 
-		            	AddressEntry a1 = new AddressEntry(null,null,null,null, null,null,null,0);
 		               a = strTmp;
-		               a1.setFirstName(strTmp);
-		               strTmp = br.readLine();
-		               a1.setLastName(strTmp);
-		               strTmp = br.readLine();
-		               a1.setStreet(strTmp);
-		               strTmp = br.readLine();
-		               a1.setState(strTmp);
-		               strTmp = br.readLine();
-		               a1.setCity(strTmp);
-		               strTmp = br.readLine();
-		               a1.setZip(Integer.parseInt(strTmp));
-		               strTmp = br.readLine();
-		               a1.setEmail(strTmp);
-		               strTmp = br.readLine();
-		               a1.setPhone(strTmp);
-		               map.put(a, new AddressEntry(a1.getFirstName(),a1.getLastName(),a1.getState(),a1.getCity(),a1.getState(),a1.getPhone(),a1.getEmail(),a1.getZip()));
+		              firstName = a;
+		              lastName = br.readLine();
+		              street = br.readLine();
+		              city = br.readLine();	             
+		              state = br.readLine();
+		              zip = Integer.parseInt(br.readLine());
+		              phone = br.readLine();
+		              email = br.readLine();
+		              
+		              add(a,new AddressEntry(firstName, lastName, street, city, state, phone, email, zip));
 			}
 		} 
             fr.close();
             br.close();
 		}
-
+    
+    public void add(String name, AddressEntry address) {
+    	 map.put(name, address);
+    }
+    
     public void list() {
     	String result = null;
     	Set<String> keylist = map.keySet();
