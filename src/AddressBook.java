@@ -1,3 +1,8 @@
+/**
+ * @author Hyeonjin Kim
+ * @version "%I%, %G%"
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -5,10 +10,22 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
+/**
+Class AddressBook defines a list of AddressEntries as well as methods to
+add new entries, as well as list all current entries
+ */
 public class AddressBook  {
 
+	/**
+     * Has a HashMap of AddressEntries
+     */
 	static HashMap<String,AddressEntry>map = new HashMap<String,AddressEntry>();
 	static Scanner scanner = new Scanner(System.in);
+	
+	   /**
+     * @param filename  name of file for initial address book data
+     */
 	
 	public static void init(String filename) throws IOException {
 		String firstName, lastName, street, city, state, phone, email;
@@ -41,11 +58,34 @@ public class AddressBook  {
 		fr.close();
 		br.close();
 	}
-
+	 /**
+     * add entry to hash map
+     * @param name adds entry to hashmap key
+     * @param address adds entry to hashmap value
+     */
+	
 	public static void addAddress(String name, AddressEntry address) {
 		map.put(name, address);
 	}
+	
+	 /**
+     * add entry to hash map
+     * @param name adds entry to hashmap key
+     * @param address adds entry to hashmap value
+     */
 	public static void add() {
+		
+		 /**
+	     * @param firstname    first name
+	     * @param lastname    last name
+	     * @param street   street name
+	     * @param city    city name
+	     * @param state   state name
+	     * @param zip    zip code
+	     * @param phone   phone number
+	     * @param email    email address
+	     */
+		
 		String firstName, lastName, street, city, state, phone, email;
 		int zip;
 		
@@ -67,6 +107,12 @@ public class AddressBook  {
 		email = scanner.nextLine();
 		addAddress(firstName,new AddressEntry(firstName, lastName, street, city, state, phone, email, zip));
 	}
+	
+	/**
+	 * 
+	 * @param lastname lastname
+	 * @param name[] save the hash map keys and delete one by one using iteration
+	 */
 	public static void removeName(String lastname) {
 		int i =0;
 		String[] name = new String[100]; 
@@ -81,6 +127,13 @@ public class AddressBook  {
 		}
 	} 
 
+	/**
+	 * 
+	 * @param startof_lastName lastname
+	 * @param list[] char list to compare the word
+	 * @param flag to check the word 
+	 */
+	
 	public static void find(String startof_lastName) {
 		int i =0;
 		boolean flag = true;

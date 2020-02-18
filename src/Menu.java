@@ -1,3 +1,8 @@
+/**
+ * @author Hyeonjin Kim
+ * @version "%I%, %G%"
+ */
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,6 +19,12 @@ public class Menu {
 		System.out.println("f) Quit");
 		System.out.println("**********************************");
 	} 
+	
+	/**
+	 * 
+	 * @param select char which user select on Menu
+	 * @throws IOException using scanner
+	 */
 	public static void menu(char select) throws IOException {
 		switch(select) {
 		case 'a': 
