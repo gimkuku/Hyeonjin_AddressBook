@@ -89,22 +89,15 @@ public class AddressBook  {
 		String firstName, lastName, street, city, state, phone, email;
 		int zip;
 		
-		Menu.prompt_FirstName();
-		firstName = scanner.nextLine();
-		Menu.prompt_LastName();
-		lastName = scanner.nextLine();
-		Menu.prompt_Street();
-		street = scanner.nextLine();
-		Menu.prompt_City();
-		city = scanner.nextLine();
-		Menu.prompt_State();
-		state = scanner.nextLine();
-		Menu.prompt_Zip();
-		zip = Integer.parseInt(scanner.nextLine());
-		Menu.prompt_Phone();
-		phone = scanner.nextLine();
-		Menu.prompt_Email();
-		email = scanner.nextLine();
+		firstName = Menu.prompt_FirstName();
+		lastName =Menu.prompt_LastName();
+		street =Menu.prompt_Street();		
+		city =Menu.prompt_City();	 
+		state = Menu.prompt_State();	
+		zip =Menu.prompt_Zip();
+		phone =Menu.prompt_Phone();
+		email =Menu.prompt_Email();
+		 
 		addAddress(firstName,new AddressEntry(firstName, lastName, street, city, state, phone, email, zip));
 	}
 	

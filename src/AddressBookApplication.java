@@ -8,6 +8,10 @@ public class AddressBookApplication {
 	/**
      * @param args  array of command line String arguments
      */
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String args[]) throws IOException {	
 		Scanner scanner = new Scanner(System.in);
 		/**

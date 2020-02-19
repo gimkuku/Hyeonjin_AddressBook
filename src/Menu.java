@@ -57,28 +57,36 @@ public class Menu {
 			
 		
 	}
-	public static void prompt_FirstName() {
+	public static String prompt_FirstName() {
 		System.out.print("First Name:");
+		return scanner.nextLine();
 	}
-	public static void prompt_LastName() {
+	public static String prompt_LastName() {
 		System.out.print("Last Name:");
+		return scanner.nextLine();
 	}
-	public static void prompt_Street() {
+	public static String prompt_Street() {
 		System.out.print("Street:");
+		return scanner.nextLine();
 	}
-	public static void prompt_City() {
+	public static String prompt_City() {
 		System.out.print("City:");
+		return scanner.nextLine();
 	}
-	public static void prompt_State() {
+	public static String prompt_State() {
 		System.out.print("State:");
+		return scanner.nextLine();
 	}
-	public static void prompt_Zip() {
+	public static int prompt_Zip() {
 		System.out.print("Zip:");
+		return Integer.parseInt(scanner.nextLine());
 	}
-	public static void prompt_Phone() {
+	public static String prompt_Phone() {
 		System.out.print("Phone:");
+		return scanner.nextLine();
 	}
-	public static void prompt_Email() {
+	public static String prompt_Email() {
 		System.out.print("Email: ");
+		return scanner.nextLine();
 	}
 }
