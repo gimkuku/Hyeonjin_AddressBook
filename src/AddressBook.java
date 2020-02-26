@@ -9,13 +9,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
-
+import javax.swing.*;
 
 /**
 Class AddressBook defines a list of AddressEntries as well as methods to
 add new entries, as well as list all current entries
  */
-public class AddressBook  {
+public class AddressBook extends JFrame {
 
 	/**
      * Has a HashMap of AddressEntries
@@ -148,7 +148,7 @@ public class AddressBook  {
 		}}
 	} 
 	
-	public static void list() {
+	public void list() {
 		int i=1;
 			for (String mapkey : map.keySet()){
 				System.out.println("#"+i++);
