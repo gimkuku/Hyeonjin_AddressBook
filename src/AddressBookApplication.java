@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.awt.*;
 /**
  * @author HyeonJin Kim
  * @version "%I%, %G%"
@@ -19,8 +20,8 @@ public class AddressBookApplication {
 	     * @param select	name of char which people choose in menu
 	     */
 		AddressBook ab = new AddressBook();
+		Display p = new Display();
 		char select = 'q';
-		
 		while(select != 'f') {
 		Menu.call_menu();
 		select  = scanner.next().toCharArray()[0];

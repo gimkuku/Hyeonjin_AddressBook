@@ -15,7 +15,7 @@ import javax.swing.*;
 Class AddressBook defines a list of AddressEntries as well as methods to
 add new entries, as well as list all current entries
  */
-public class AddressBook extends JFrame {
+public class AddressBook {
 
 	/**
      * Has a HashMap of AddressEntries
@@ -148,7 +148,7 @@ public class AddressBook extends JFrame {
 		}}
 	} 
 	
-	public void list() {
+	public static void list() {
 		int i=1;
 			for (String mapkey : map.keySet()){
 				System.out.println("#"+i++);
